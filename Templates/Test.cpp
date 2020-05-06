@@ -3,110 +3,70 @@
 
 
 int main() {
-	List<Bus> FirstList;   //in the park
-	List<Bus> SecondList;  // int the route
-
+	List<Bus> ParkList;   //in the park
+	List<Bus> RouteList;  // in the route
 	Bus alone;
-	cout << alone;
-	alone.SetBus("");
-	alone.SetDriver("");
-	alone.SetRoute("");
-	//cout << alone.GetBus();
-	cout << alone;
-	alone.SetBus("1");
-	alone.SetDriver("Chelik");
-	alone.SetRoute("Maiamo!");
-	cout << alone;
-	cout << FirstList.size() << endl;
+	alone.SetBus("11");
+	alone.SetDriver("Man");
+	alone.SetRoute("100");
 
-	if (FirstList.empty()) cout << "empty";
-	else cout << "no empty";
+	if (ParkList.empty()) cout << "List park is empty" << endl;
+	else cout << "List park isn't empty" << endl;
+	ParkList.Print();
 
-	cout << endl;
-	//FirstList.push_front(alone);
-	if (FirstList.empty()) cout << "empty";
-	else cout << "no empty";
+	cout << "Check load func:" << endl;
+	ParkList.load("park.csv");
+	cout << "Park List:" << endl;
+	ParkList.Print();
 
-	cout << endl;
+	if (ParkList.empty()) cout << "List park is empty" << endl;
+	else cout << "List park isn't empty" << endl;
 
-	FirstList.load("park.csv");
-
-	if (FirstList.empty()) cout << "empty";
-	else cout << "no empty";
-	cout << "LIST1:" << endl;
-	FirstList.Print();
-	cout << "LIST2:" << endl;
-	SecondList.Print();
+	cout <<endl<< "Check SPLICE:" << endl << endl;
+	cout << "Park List before splice:" << endl;
+	ParkList.Print();
+	cout << "Route List before splice:" << endl;
+	RouteList.Print();
+	ParkList.splice(ParkList.begin(), RouteList);
+	ParkList.splice(ParkList.begin(), RouteList);
+	ParkList.splice(ParkList.begin(), RouteList);
+	RouteList.splice(RouteList.end(), ParkList);
+	cout << "Park List after splice:" << endl;
+	ParkList.Print();
+	cout << "Route List after splice:" << endl;
+	RouteList.Print();
 	
+	cout << endl << "Check push_front & pop_front:" << endl;
+	RouteList.pop_front();
+	RouteList.push_front(alone);
+	RouteList.Print();
+
+	cout << endl << "Check find func:" << endl;
+	alone.SetBus("3");
+	if (RouteList.find(alone) == nullptr) cout << "null" << endl;
+	else cout << (*RouteList.find(alone)).data << endl;
+	alone.SetBus("11");
+	if (RouteList.find(alone) == nullptr) cout << "null" << endl;
+	else cout << (*RouteList.find(alone)).data << endl;
+
+	cout << endl << "Check remove func:" << endl;
+	RouteList.remove(alone);
+	RouteList.Print();
+
+	RouteList.clear();
+	RouteList.load("park.csv");
+	cout << endl << "Check Output this route number :" << endl;
+	RouteList.Print();
+	RouteList.PrintRouteBus("15");
+	RouteList.PrintRouteBus("16");
+
+	cout << endl << "Check Change Name :" << endl;
+	ParkList.Print();
+	ParkList.ChangeDriver("Sasha", "NeSasha");
+	ParkList.Print();
+
+
 	return 0;	
 }
-
-
-/*
-while (1) {
-	cout << " Buses in rout:" << endl;
-	cout << "BUS # 2" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0  ==" << endl;
-	cout << "BUS # 4" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0  ==" << endl << endl;
-	cout << " Buses in PARK:" << endl;
-	cout << "BUS # 1" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0 " << endl;
-	cout << " Buses in PARK:" << endl;
-	cout << "BUS # 3" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0 " << endl;
-	system("cls");
-	cout << " Buses in rout:" << endl;
-	cout << "BUS # 2" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0  == ==" << endl;
-	cout << "BUS # 4" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0  == ==" << endl << endl;
-	cout << " Buses in PARK:" << endl;
-	cout << "BUS # 1" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0 " << endl;
-	cout << " Buses in PARK:" << endl;
-	cout << "BUS # 3" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0 " << endl;
-	system("cls");
-	cout << " Buses in rout:" << endl;
-	cout << "BUS # 2" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0  == == ===" << endl;
-	cout << "BUS # 4" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0  == == ===" << endl << endl;
-	cout << " Buses in PARK:" << endl;
-	cout << "BUS # 1" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0 " << endl;
-	cout << " Buses in PARK:" << endl;
-	cout << "BUS # 3" << endl;
-	cout << "----------" << endl;
-	cout << "|--|--|--|" << endl;
-	cout << "0--------0 " << endl;
-	system("cls");
-
-}
-*/
-
 
 
